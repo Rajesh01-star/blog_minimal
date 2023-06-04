@@ -1,0 +1,17 @@
+
+<center>
+  <h1 class="title">Hi, these are my blogs/</h1>
+</center>
+  <% for(let i = 0; i < previewBlogs.length;i++){ %>
+    <h2><a href="/blogs/<%= previewBlogs[i].id %>"><%= previewBlogs[i].heading %></a></h2>
+    <p><%= previewBlogs[i].previewText %></p>
+    <center>
+      
+        <img src="data:<%= previewBlogs[i].image.contentType %>;base64,<%= previewBlogs[i].image.data.toString('base64') %>" alt="first-rice" style="width:400px" />
+      
+    </center>
+    <p><%= previewBlogs[i].id %></p>
+  <% }  %> 
+
+
+  

@@ -1,0 +1,17 @@
+<%- include("partials/header", { titleSite: titleSite }) -%>
+<main>
+  <% if (titleSite === 'home') { %>
+    <%- include("partials/home") -%>  
+  <% } else if (titleSite === 'about') { %>
+    <%- include("partials/about") -%>  
+  <% } else if (titleSite === 'blog') { %>
+    <%- include("partials/blog") -%>  
+  <% } else if (titleSite === 'contact') { %>
+    <%- include("partials/contact") -%>  
+  <% } else if (titleSite === 'individual') { %>
+    <%- include("partials/individual") -%>
+  <% } else if (titleSite === 'admin') { %>
+    <%- include("partials/admin") -%>
+  <% } %>
+</main>
+<%- include("partials/footer") -%>

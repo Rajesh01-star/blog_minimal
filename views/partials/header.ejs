@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <% if (titleSite == "home"){ %>
+      <title>atharv's website</title>
+    <% }else { %>
+    <title><%=titleSite%> page</title>
+    <% } %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <% if(titleSite === "individual"){ %>
+      <link rel="stylesheet" href="../css/styles.css">
+    <% }else { %>
+      <link rel="stylesheet" href="css/styles.css">
+    <% } %>
+    
+    <link rel="icon" type="image/png" href="favicon/favicon.ico">
+  </head>
+  <body>
+    <header>
+      <div id="img-gallery">
+      </div>
+      <h1>Rajesh <span>Kumar</span></h1>
+      <form id="site-search">
+	<input type="text" placeholder="Search Site">
+	<button>go</button>
+      </form>
+      <nav>
+	<span>[<a href="/">Home</a>]</span>
+	<span>[<a href="/about">About</a>]</span>
+	<span>[<a href="/blog">Blog</a>]</span>
+	<span>[<a href="/contact">Contact</a>]</span>
+      </nav>
+      <blockquote id="header-quote">
+	❝ What I wouldn't give to be normal.<br>
+	<span>To live in that bubble of the naive. ❞</span>
+      </blockquote>
+    </header>

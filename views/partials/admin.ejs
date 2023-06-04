@@ -1,0 +1,22 @@
+<center>
+    <h1 class="title">Admin page</h1>
+</center> 
+<form id="form" action="/blog" method="POST" enctype="multipart/form-data">
+    <input name="title" type="text" placeholder="Enter your title" required/>
+    <div id="preview_image_container" class="file-input-container">
+      <div class="file-input-box">
+        Select your preview image
+      </div>
+      <input name="preview_img" id="preview_image" type="file" required/>
+    </div>
+    <div id="markdown_file_container" class="file-input-container">
+      <div id="md" class="file-input-box">
+        Select your markdown file
+      </div>
+      <input name="markdown_file" id="markdown_file" type="file" required />
+    </div>
+    <button id="submit">Submit</button>
+  </form>
+  
+
+  
