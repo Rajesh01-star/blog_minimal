@@ -4,10 +4,26 @@ import cors from 'cors';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-// Import the routes and other utility functions here
+
+// import { postBlog } from "./utils/postBlog.mjs";
+import { fetchBlogs } from "./utils/fetchBlogs.mjs";
+import { fetchIndiBlog } from "./utils/fetchIndiBlog.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+// const storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//       cb(null, './uploads');
+//     },
+//     filename: function (req, file, cb) {
+//       const uniqueSuffix = `${Date.now()}-${file.originalname}`;
+//       cb(null, file.fieldname + '-' + uniqueSuffix)
+//     }
+//   })
+  
+  // const upload = multer({ storage: storage })
+
 
 const app = express();
 
@@ -23,38 +39,61 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// Define your routes and other middleware here
 
-// Regular route handling
-app.get('/', (req, res) => {
-  res.render('base', { titleSite: 'home' });
-});
 
-app.get('/about', (req, res) => {
-  res.render('base', { titleSite: 'about' });
-});
+// regular route handling
+app.get("/",(req,res)=>{
+    res.render('base',{titleSite:"home"})
+})
 
-app.get('/blog', async (req, res) => {
+app.get("/about",(req,res)=>{
+    res.render('base',{titleSite:"about"})
+})
+
+app.get("/blog", async (req, res) => {
   try {
     const resultBlogs = await fetchBlogs();
-    res.render('base', { titleSite: 'blog', previewBlogs: resultBlogs });
+    // console.log(resultBlogs);
+    res.render('base',{titleSite:"blog", previewBlogs:resultBlogs})
   } catch (error) {
     console.error('Error fetching blogs:', error);
     res.status(500).json({ error: 'An error occurred while fetching blogs' });
   }
-});
+  });
 
-app.get('/contact', (req, res) => {
-  res.render('base', { titleSite: 'contact' });
-});
+// app.post("/blog",upload.fields([{ name:"preview_img" },{ name:"markdown_file" }]),async (req,res)=>{
+//     const title = req.body.title;
+//     const imgPath = req.files['preview_img'][0].path;
+//     const mdPath = req.files['markdown_file'][0].path;
+//     try {
+//       await postBlog(title, imgPath, mdPath);
+//       res.redirect('/');
+//     } catch (error) {
+//       console.log(error);
+//       res.redirect('/admin');
+//     }
+    
+// })
+  
 
-app.get('/blogs/:slug', async (req, res) => {
+app.get("/contact",(req,res)=>{
+    res.render('base',{titleSite:"contact"})
+})
+
+// app.get("/admin",(req,res)=>{
+//   res.render('base',{titleSite:"admin"});
+// })
+
+
+// individual blog page
+app.get('/blogs/:slug',async (req, res) => {
   const { slug } = req.params;
   console.log(slug);
-  try {
+  try{
     const individualBlog = await fetchIndiBlog(slug);
-    res.render('base', { titleSite: 'individual', individualBlog: individualBlog });
-  } catch (error) {
+    // console.log(indiBlog);
+    res.render('base',{titleSite:"individual", individualBlog:individualBlog})
+  }catch(error){
     console.error('Error fetching blogs:', error);
     res.status(500).json({ error: 'An error occurred while fetching blogs' });
   }
