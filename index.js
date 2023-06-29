@@ -1,44 +1,43 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import cors from 'cors';
-import path, { dirname } from 'path';
+import express from "express";
+import bodyParser from "body-parser";
+import cors from "cors";
+import multer from "multer";
+import path from 'path';
+
 import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
-
-// import { postBlog } from "./utils/postBlog.mjs";
+import { postBlog } from "./utils/postBlog.mjs";
 import { fetchBlogs } from "./utils/fetchBlogs.mjs";
 import { fetchIndiBlog } from "./utils/fetchIndiBlog.mjs";
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// const storage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//       cb(null, './uploads');
-//     },
-//     filename: function (req, file, cb) {
-//       const uniqueSuffix = `${Date.now()}-${file.originalname}`;
-//       cb(null, file.fieldname + '-' + uniqueSuffix)
-//     }
-//   })
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './uploads');
+    },
+    filename: function (req, file, cb) {
+      const uniqueSuffix = `${Date.now()}-${file.originalname}`;
+      cb(null, file.fieldname + '-' + uniqueSuffix)
+    }
+  })
   
-  // const upload = multer({ storage: storage })
+  const upload = multer({ storage: storage })
 
 
 const app = express();
 
-// Middleware
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({extended:false}));
 app.use(cors());
 app.use(express.json());
 
-// Serve static files
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Set the views directory and view engine
 app.set('views', path.join(__dirname, 'views'));
+// app.set('views', './views');
 app.set('view engine', 'ejs');
-
 
 
 // regular route handling
@@ -61,19 +60,19 @@ app.get("/blog", async (req, res) => {
   }
   });
 
-// app.post("/blog",upload.fields([{ name:"preview_img" },{ name:"markdown_file" }]),async (req,res)=>{
-//     const title = req.body.title;
-//     const imgPath = req.files['preview_img'][0].path;
-//     const mdPath = req.files['markdown_file'][0].path;
-//     try {
-//       await postBlog(title, imgPath, mdPath);
-//       res.redirect('/');
-//     } catch (error) {
-//       console.log(error);
-//       res.redirect('/admin');
-//     }
+app.post("/blog",upload.fields([{ name:"preview_img" },{ name:"markdown_file" }]),async (req,res)=>{
+    const title = req.body.title;
+    const imgPath = req.files['preview_img'][0].path;
+    const mdPath = req.files['markdown_file'][0].path;
+    try {
+      await postBlog(title, imgPath, mdPath);
+      res.redirect('/');
+    } catch (error) {
+      console.log(error);
+      res.redirect('/admin');
+    }
     
-// })
+})
   
 
 app.get("/contact",(req,res)=>{
