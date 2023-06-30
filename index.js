@@ -79,9 +79,9 @@ app.get("/contact",(req,res)=>{
     res.render('base',{titleSite:"contact"})
 })
 
-// app.get("/admin",(req,res)=>{
-//   res.render('base',{titleSite:"admin"});
-// })
+app.get("/admin",(req,res)=>{
+  res.render('base',{titleSite:"admin"});
+})
 
 
 // individual blog page
