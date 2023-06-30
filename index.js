@@ -83,13 +83,19 @@ app.get("/admin",(req,res)=>{
   res.render('base',{titleSite:"admin"});
 })
 
-app.get("/imgGallery",(req,res)=>{
-  res.render('base',{titleSite:"imgGallery"});
+app.get("/gallery",(req,res)=>{
+  res.render('base',{titleSite:"gallery"});
+})
+
+app.get("/gallery/:slug",(req,res)=>{
+  const { slug } = req.params;
+  console.log(slug);
+  res.render('base',{titleSite:"archive",key:slug})
 })
 
 
 // individual blog page
-app.get('/blogs/:slug',async (req, res) => {
+app.get("/blogs/:slug",async (req, res) => {
   const { slug } = req.params;
   // console.log(slug);
   try{

@@ -1,4 +1,3 @@
-console.log("hello");
 const galleryImages = document.getElementsByClassName("image");
 const imgContainer = document.querySelector(".imgContainer");
 

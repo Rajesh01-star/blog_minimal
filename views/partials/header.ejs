@@ -10,17 +10,19 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <% if(titleSite === "individual"){ %>
+    <% if (titleSite === "individual" || titleSite === "archive") { %>
       <link rel="stylesheet" href="../css/styles.css">
+      <link rel="stylesheet" href="../css/imgGallery.css">
       <link rel="icon" type="image/png" href="../favicon/favicon.ico">
-    <% }else if(titleSite === "imgGallery"){ %>
+    <% } else if (titleSite === "gallery") { %>
       <link rel="stylesheet" href="css/styles.css">
       <link rel="icon" type="image/png" href="favicon/favicon.ico">
       <link rel="stylesheet" href="css/imgGallery.css">
-    <% }else { %>
+    <% } else { %>
       <link rel="stylesheet" href="css/styles.css">
       <link rel="icon" type="image/png" href="favicon/favicon.ico">
     <% } %>
+    
     
   </head>
   <body>
@@ -36,11 +38,18 @@
 	<span>[<a href="/">Home</a>]</span>
 	<span>[<a href="/about">About</a>]</span>
 	<span>[<a href="/blog">Blog</a>]</span>
-	<span>[<a href="/imgGallery">Gallery</a>]</span>
+	<span>[<a href="/gallery">Gallery</a>]</span>
 	<span>[<a href="/contact">Contact</a>]</span>
       </nav>
       <blockquote id="header-quote">
 	❝ What I wouldn't give to be normal.<br>
 	<span>To live in that bubble of the naive. ❞</span>
       </blockquote>
+      <nav>
+        <span>[<a href="/gallery/roadTrip">roadTrip</a>]</span>
+        <span>[<a href="/gallery/esplanade">esplanade</a>]</span>
+        <span>[<a href="/">Blog</a>]</span>
+        <span>[<a href="/">Gallery</a>]</span>
+        <span>[<a href="/">Contact</a>]</span>
+            </nav>
     </header>

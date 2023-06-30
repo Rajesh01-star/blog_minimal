@@ -12,14 +12,18 @@
   </p>
 </footer>
 
-<% if(titleSite === "individual"){ %>
+<% if (titleSite === "individual") { %>
   <script src="../js/script.js"></script>
-<% }else if(titleSite === "imgGallery"){ %>
+  <% } else if (titleSite === "archive") { %>
+  <script src="../js/script.js"></script>
+  <script src="../js/archive.js"></script>
+<% } else if (titleSite === "gallery") { %>
   <script src="js/script.js"></script>
   <script src="js/imgGallery.js"></script>
-<% }else { %>
+<% } else { %>
   <script src="js/script.js"></script>
 <% } %>
+
 
 
 <% if(titleSite === "admin"){ %>
