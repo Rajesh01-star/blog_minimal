@@ -12,7 +12,6 @@ function randomNumber(min, max) {
   }
   
   document.addEventListener("DOMContentLoaded", (event) => {
-    console.log("triggered");
     var gal = document.getElementById("img-gallery");
     for (var i = 0; i < 3; i++) {
       var img = document.createElement("img");

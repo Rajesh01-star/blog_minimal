@@ -83,11 +83,15 @@ app.get("/admin",(req,res)=>{
   res.render('base',{titleSite:"admin"});
 })
 
+app.get("/imgGallery",(req,res)=>{
+  res.render('base',{titleSite:"imgGallery"});
+})
+
 
 // individual blog page
 app.get('/blogs/:slug',async (req, res) => {
   const { slug } = req.params;
-  console.log(slug);
+  // console.log(slug);
   try{
     const individualBlog = await fetchIndiBlog(slug);
     // console.log(indiBlog);

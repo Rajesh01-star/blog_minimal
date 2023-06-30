@@ -1,0 +1,24 @@
+
+<% const galImages = [
+"http://0x0.st/opZU.jpg",
+"http://0x0.st/HQDU.jpg",
+"http://0x0.st/HQD0.jpg",
+"http://0x0.st/opN6.jpg",
+"http://0x0.st/opqs.jpg",
+"http://0x0.st/opZ2.jpg",
+"http://0x0.st/HQDG.jpg",
+"http://0x0.st/HQDD.jpg",
+"http://0x0.st/HQDk.MP.jpg",
+"http://0x0.st/HQDd.jpg",
+"http://0x0.st/HQDn.MP.jpg",
+"http://0x0.st/HQD5.MP.jpg"
+]; %>
+
+<center>
+    <h1 class="title">Some good memories</h1>
+  </center>  
+<div class="imgContainer">
+    <% for (let i = 0; i < galImages.length; i++) { %>
+        <img class="image" data-index="<%= i %>" data-status="inactive" src="<%= galImages[i] %>" />
+      <% } %>
+</div>
