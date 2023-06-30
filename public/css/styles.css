@@ -266,6 +266,9 @@ pre {
   word-wrap: normal;
   white-space: pre-wrap;
 }
+iframe{
+  width: 100%;
+}
 
 
 /** First Media Query **/
