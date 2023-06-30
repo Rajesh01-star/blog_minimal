@@ -11,7 +11,13 @@
 <!-- <p>Well this site is heavily inspired by @bugswriter's home page</p> -->
   </p>
 </footer>
-<script src="js/script.js"></script>
+
+<% if(titleSite === "individual"){ %>
+  <script src="../js/script.js"></script>
+<% }else { %>
+  <script src="js/script.js"></script>
+<% } %>
+
 
 <% if(titleSite === "admin"){ %>
   <script src="js/admin.js"></script>

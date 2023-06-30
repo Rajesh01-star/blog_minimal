@@ -7,11 +7,12 @@ function randomNumber(min, max) {
   }
   
   function getRandomImage() {
-    let num = randomNumber(1, 21);
+    let num = randomNumber(1, images.length);
     return images[num];
   }
   
   document.addEventListener("DOMContentLoaded", (event) => {
+    console.log("triggered");
     var gal = document.getElementById("img-gallery");
     for (var i = 0; i < 3; i++) {
       var img = document.createElement("img");
