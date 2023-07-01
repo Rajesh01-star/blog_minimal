@@ -87,11 +87,6 @@ app.get("/gallery",(req,res)=>{
   res.render('base',{titleSite:"gallery"});
 })
 
-app.get("/gallery/:slug",(req,res)=>{
-  const { slug } = req.params;
-  console.log(slug);
-  res.render('base',{titleSite:"archive",key:slug})
-})
 
 
 // individual blog page
